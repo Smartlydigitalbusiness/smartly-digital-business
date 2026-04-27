@@ -47,12 +47,50 @@
   .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--gray)); animation: scrollAnim 2s ease-in-out infinite; }
   @keyframes scrollAnim { 0%,100%{ opacity:0.3; transform:scaleY(1)} 50%{opacity:1; transform:scaleY(1.2)} }
 
-  /* STATS */
-  .stats { padding: 4rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
-  .stat { padding: 2rem; text-align: center; border-right: 1px solid var(--border); }
-  .stat:last-child { border-right: none; }
-  .stat-number { font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 000; color: var(--accent); letter-spacing: -0.04em; }
-  .stat-label { font-size: 0.875rem; color: var(--gray); margin-top: 0.25rem; }
+  /* PROBLEME */
+ .problem-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.problem-intro h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.problem-intro p {
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.problem-grid {
+  display: grid;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+}
+
+.problem-item {
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+}
+
+.problem-icon {
+  font-size: 24px;
+}
+
+.problem-text {
+  font-size: 16px;
+}
+
+.problem-conclusion p {
+  margin: 5px 0;
+}
 
   /* SERVICES */
   section { padding: 6rem 4rem; }
@@ -130,9 +168,9 @@
     votre business<br>
     <em>grâce au</em> <span class="rotating-word" id="rotating">digital.</span>
   </h1>
-  <p class="hero-sub">Smartly Digital Business vous accompagne dans votre transformation digitale avec des stratégies concrètes et des résultats mesurables.</p>
+  <p class="hero-sub">J’accompagne les TPE et PME à développer leur visibilité en ligne, attirer plus de clients et structurer leur présence digitale avec des solutions simples et efficaces.</p>
   <div class="hero-actions">
-    <a href="#contact" class="btn-primary">Démarrer un projet</a>
+    <a href="#contact" class="btn-primary">Réserver un appel gratuit</a>
     <a href="#services" class="btn-ghost">Voir nos services →</a>
   </div>
   <div class="scroll-hint">
@@ -141,19 +179,43 @@
   </div>
 </section>
 
-<div class="stats">
-  <div class="stat fade-up">
-    <div class="stat-number" data-count="94">0%</div>
-    <div class="stat-label">Des TPE considèrent leur présence en ligne indispensable</div>
+<div class="problem-section">
+
+  <div class="problem-intro fade-up">
+    <h2>Aujourd’hui, être présent en ligne ne suffit plus.</h2>
+    <p>Votre présence digitale doit désormais attirer, convaincre et transformer.</p>
   </div>
-  <div class="stat fade-up" style="transition-delay:0.1s">
-    <div class="stat-number" data-count="82">0%</div>
-    <div class="stat-label">Des internautes découvrent de nouvelles entreprises en ligne</div>
+
+  <div class="problem-grid">
+
+    <div class="problem-item fade-up">
+      <div class="problem-icon">⚠️</div>
+      <div class="problem-text">
+        Votre entreprise manque de visibilité sur internet ?
+      </div>
+    </div>
+
+    <div class="problem-item fade-up" style="transition-delay:0.1s">
+      <div class="problem-icon">📉</div>
+      <div class="problem-text">
+        Vous avez du mal à attirer de nouveaux clients régulièrement ?
+      </div>
+    </div>
+
+    <div class="problem-item fade-up" style="transition-delay:0.2s">
+      <div class="problem-icon">🤯</div>
+      <div class="problem-text">
+        Vous ne savez pas par où commencer dans le digital ?
+      </div>
+    </div>
+
   </div>
-  <div class="stat fade-up" style="transition-delay:0.2s">
-    <div class="stat-number" data-count="76">0%</div>
-    <div class="stat-label">Des Français vérifient un site web avant d'acheter</div>
+
+  <div class="problem-conclusion fade-up">
+    <p><strong>Résultat :</strong> vous passez peut-être à côté d’opportunités chaque jour.</p>
+    <p><strong>Bonne nouvelle :</strong> il existe des solutions simples et efficaces pour changer ça.</p>
   </div>
+
 </div>
 
 <section id="services">
@@ -162,26 +224,26 @@
   <div class="services-grid">
     <div class="service-card fade-up">
       <div class="service-icon">🌐</div>
-      <h3>Création de site web</h3>
-      <p>Des sites internet performants, modernes et optimisés pour convertir vos visiteurs en clients. De la vitrine au e-commerce.</p>
+      <h3>Création de site internet</h3>
+      <p>Un site professionnel, moderne et optimisé pour convertir vos visiteurs en clients. De la vitrine au e-commerce.</p>
       <span class="service-tag">→ En savoir plus</span>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.1s">
       <div class="service-icon">📈</div>
-      <h3>Stratégie digitale</h3>
+      <h3>Visibilité & référencement (SEO)</h3>
       <p>Un plan d'action personnalisé pour booster votre visibilité en ligne, attirer les bons clients et développer votre chiffre d'affaires.</p>
       <span class="service-tag">→ En savoir plus</span>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.15s">
-      <div class="service-icon">🎨</div>
-      <h3>Identité visuelle</h3>
-      <p>Logo, charte graphique, supports de communication : construisons ensemble une image de marque forte et cohérente.</p>
+      <div class="service-icon">📊</div>
+      <h3>Stratégie digitale</h3>
+      <p>Une vision claire et un plan d’action adapté à votre business.</p>
       <span class="service-tag">→ En savoir plus</span>
     </div>
     <div class="service-card fade-up" style="transition-delay:0.2s">
       <div class="service-icon">📱</div>
-      <h3>Community management</h3>
-      <p>Animation de vos réseaux sociaux, création de contenu engageant et gestion de votre communauté pour développer votre notoriété.</p>
+      <h3>Réseaux sociaux & communication</h3>
+      <p>Développez votre image et créez une vraie présence en ligne.</p>
       <span class="service-tag">→ En savoir plus</span>
     </div>
   </div>
@@ -191,14 +253,14 @@
   <div class="about">
     <div class="about-visual fade-up">
       <div class="about-box">
-        <div class="about-badge">Disponible maintenant</div>
-        <div class="about-box-title">Une équipe dédiée à votre réussite</div>
-        <p>Nous combinons créativité, expertise technique et connaissance du marché pour vous offrir des solutions digitales sur-mesure.</p>
+        <div class="about-badge">Pourquoi travailler avec moi ?</div>
+        <div class="about-box-title">Mon objectif : rendre le digital accessible, clair et efficace pour vous permettre de vous concentrer sur l’essentiel — votre activité.</div>
+        <p>Je m’appelle Sanae, fondatrice de Smartly Digital Business. J’aide les entrepreneurs et petites entreprises à se développer en ligne sans se perdre dans des stratégies complexes.</p>
         <div class="about-features">
           <div class="feat">Accompagnement personnalisé de A à Z</div>
-          <div class="feat">Résultats mesurables et transparents</div>
-          <div class="feat">Réactivité et communication fluide</div>
-          <div class="feat">Tarifs adaptés aux TPE & PME</div>
+          <div class="feat">Des solutions simples, sans jargon technique</div>
+          <div class="feat">Une approche orientée résultats</div>
+          <div class="feat">Une compréhension des besoins des TPE/PME</div>
         </div>
       </div>
     </div>
@@ -253,9 +315,9 @@
 </section>
 
 <section id="contact" class="cta-section">
-  <p class="section-label" style="text-align:center">Prêt à passer à l'action ?</p>
+  <p class="section-label" style="text-align:center">Prêt à faire grandir votre business ?</p>
   <h2 class="section-title fade-up">Faites grandir<br>votre business <em>aujourd'hui</em></h2>
-  <p>Prenez rendez-vous avec notre équipe. Nous vous répondons sous 24h.</p>
+  <p>Réservez votre appel découverte gratuit et faisons le point sur votre situation.</p>
   <a href="mailto:contact@smartly-digital.fr" class="btn-primary">Nous contacter →</a>
 </section>
 
