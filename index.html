@@ -9,18 +9,22 @@
 
 <style>
 :root{
-  --bg:#0A0A0F;
+  --bg:#07070C;
   --white:#FAFAF8;
-  --gray:#9a9aa5;
+  --muted:#A0A0AE;
   --accent:#00E5B4;
-  --card:#12121A;
+  --accent2:#7C5CFF;
+  --card:rgba(255,255,255,0.04);
   --border:rgba(255,255,255,0.08);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:'DM Sans',sans-serif;
-  background:var(--bg);
+  background:radial-gradient(circle at top, rgba(124,92,255,0.12), transparent 40%),
+             radial-gradient(circle at bottom, rgba(0,229,180,0.08), transparent 50%),
+             var(--bg);
   color:var(--white);
   overflow-x:hidden;
 }
@@ -34,15 +38,28 @@ nav{
   width:100%;
   display:flex;
   justify-content:space-between;
-  padding:14px 28px;
-  background:rgba(10,10,15,0.8);
-  backdrop-filter:blur(12px);
+  padding:16px 32px;
+  background:rgba(10,10,15,0.6);
+  backdrop-filter:blur(18px);
   border-bottom:1px solid var(--border);
   z-index:100;
 }
-.logo{font-family:'Syne';font-weight:700}
+
+.logo{
+  font-family:'Syne';
+  font-weight:700;
+}
+
 .logo span{color:var(--accent)}
-nav a{color:var(--gray);text-decoration:none;margin-left:18px;font-size:13px}
+
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:18px;
+  font-size:13px;
+}
+
+nav a:hover{color:var(--white)}
 
 /* HERO */
 .hero{
@@ -50,56 +67,76 @@ nav a{color:var(--gray);text-decoration:none;margin-left:18px;font-size:13px}
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:120px 28px 60px;
+  padding:140px 32px 80px;
+  position:relative;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  top:-200px;
+  right:-200px;
+  width:500px;
+  height:500px;
+  background:radial-gradient(circle, rgba(124,92,255,0.25), transparent 60%);
+  filter:blur(40px);
 }
 
 .hero h1{
   font-family:'Syne';
-  font-size:clamp(2.6rem,6vw,5rem);
+  font-size:clamp(3rem,6vw,5.5rem);
   line-height:1.05;
+  letter-spacing:-1px;
 }
 
-.rotating{color:var(--accent)}
+.rotating{
+  color:var(--accent);
+}
 
 .hero p{
   margin-top:18px;
-  color:var(--gray);
-  max-width:600px;
-  line-height:1.6;
+  color:var(--muted);
+  max-width:650px;
+  line-height:1.7;
+  font-size:1.05rem;
 }
 
-/* CTA SYSTEM */
+/* CTA */
 .cta-row{
+  margin-top:32px;
   display:flex;
-  gap:12px;
-  margin-top:28px;
+  gap:14px;
   flex-wrap:wrap;
 }
 
 .btn{
-  padding:12px 20px;
+  padding:12px 22px;
   border-radius:999px;
   font-size:14px;
   text-decoration:none;
-  transition:.2s;
+  transition:.25s;
 }
 
 .btn-primary{
-  background:var(--accent);
+  background:linear-gradient(135deg,var(--accent),#00bfa6);
   color:#000;
-  font-weight:500;
+  font-weight:600;
+  box-shadow:0 10px 30px rgba(0,229,180,0.15);
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
 }
 
 .btn-secondary{
   border:1px solid var(--border);
   color:var(--white);
+  background:rgba(255,255,255,0.02);
 }
 
-.btn-primary:hover{transform:translateY(-2px)}
-
-/* SECTION BASE */
+/* SECTION GLOBAL */
 section{
-  padding:80px 28px;
+  padding:100px 32px;
 }
 
 /* PROBLEM */
@@ -109,16 +146,15 @@ section{
 
 .problem h2{
   font-family:'Syne';
-  font-size:2rem;
-  margin-bottom:10px;
+  font-size:2.4rem;
 }
 
-.problem p{color:var(--gray)}
+.problem p{color:var(--muted);margin-top:10px}
 
 .problem-grid{
-  margin-top:40px;
+  margin-top:50px;
   display:grid;
-  gap:14px;
+  gap:16px;
   max-width:900px;
   margin-inline:auto;
 }
@@ -126,52 +162,70 @@ section{
 .problem-card{
   background:var(--card);
   border:1px solid var(--border);
-  padding:18px;
-  border-radius:12px;
-  text-align:left;
+  padding:20px;
+  border-radius:16px;
+  backdrop-filter:blur(10px);
+  transition:.2s;
+}
+
+.problem-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(0,229,180,0.3);
 }
 
 /* TRANSITION */
 .transition{
   text-align:center;
-  background:linear-gradient(180deg,transparent,rgba(0,229,180,0.04),transparent);
+  background:radial-gradient(circle at center, rgba(0,229,180,0.08), transparent 60%);
 }
 
 .transition h2{
   font-family:'Syne';
-  font-size:2rem;
+  font-size:2.2rem;
 }
 
 .transition p{
-  color:var(--gray);
+  color:var(--muted);
   margin-top:10px;
 }
 
 /* SERVICES */
 .services h2{
   font-family:'Syne';
+  font-size:2.6rem;
   text-align:center;
-  font-size:2.3rem;
 }
 
 .grid{
-  margin-top:40px;
+  margin-top:50px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px;
+  gap:18px;
 }
 
 .service{
-  background:var(--card);
+  background:rgba(255,255,255,0.03);
   border:1px solid var(--border);
-  padding:22px;
-  border-radius:14px;
-  transition:.2s;
+  padding:26px;
+  border-radius:18px;
+  transition:.25s;
+  position:relative;
+  overflow:hidden;
 }
 
+.service::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:linear-gradient(135deg,transparent,rgba(0,229,180,0.15),transparent);
+  opacity:0;
+  transition:.3s;
+}
+
+.service:hover::before{opacity:1}
+
 .service:hover{
-  transform:translateY(-3px);
-  border-color:rgba(0,229,180,0.3);
+  transform:translateY(-5px);
 }
 
 .service h3{
@@ -182,27 +236,46 @@ section{
 /* ABOUT */
 .about{
   display:grid;
-  gap:30px;
+  gap:40px;
+  max-width:900px;
+  margin:auto;
 }
 
-.about p{color:var(--gray);line-height:1.7}
+.about p{
+  color:var(--muted);
+  line-height:1.8;
+}
 
 /* CTA FINAL */
 .cta{
   text-align:center;
+  background:radial-gradient(circle at center, rgba(124,92,255,0.12), transparent 60%);
 }
 
 .cta h2{
   font-family:'Syne';
-  font-size:2.2rem;
+  font-size:2.4rem;
 }
 
-.cta p{color:var(--gray);margin-top:10px}
+.cta p{
+  color:var(--muted);
+  margin-top:10px;
+}
 
-/* MOBILE OPTIMISATION */
+/* ANIMATION SIMPLE */
+.fade{
+  animation:fade .8s ease forwards;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* MOBILE */
 @media(max-width:768px){
-  section{padding:70px 20px}
-  nav{padding:12px 18px}
+  section{padding:80px 20px}
+  nav{padding:14px 18px}
 }
 </style>
 </head>
@@ -237,37 +310,36 @@ section{
 <!-- PROBLEM -->
 <section class="problem">
   <h2>Votre présence en ligne ne suffit plus</h2>
-  <p>Vous faites peut-être face à ces problèmes :</p>
+  <p>Voici ce que vivent beaucoup d’entreprises aujourd’hui :</p>
 
   <div class="problem-grid">
     <div class="problem-card">Manque de visibilité sur Google</div>
-    <div class="problem-card">Peu ou pas de nouveaux clients</div>
-    <div class="problem-card">Stratégie digitale floue ou inexistante</div>
+    <div class="problem-card">Peu de nouveaux clients réguliers</div>
+    <div class="problem-card">Stratégie digitale inexistante ou floue</div>
   </div>
 </section>
 
 <!-- TRANSITION -->
 <section class="transition">
-  <h2>Et si vous pouviez transformer ça en croissance ?</h2>
-  <p>Avec la bonne stratégie digitale, tout devient plus simple.</p>
+  <h2>Et si votre digital devenait un levier de croissance ?</h2>
+  <p>Une stratégie claire peut transformer votre activité.</p>
   <div class="cta-row" style="justify-content:center">
-    <a href="#services" class="btn btn-primary">Découvrir comment</a>
+    <a class="btn btn-primary" href="#services">Découvrir comment</a>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section id="services" class="services">
-  <h2>Des solutions concrètes pour votre business</h2>
+  <h2>Des solutions qui transforment votre activité</h2>
 
   <div class="grid">
-
     <div class="service">
-      <h3>Site web performant</h3>
-      <p>Un site conçu pour transformer vos visiteurs en clients.</p>
+      <h3>Site qui convertit</h3>
+      <p>Un site pensé pour transformer vos visiteurs en clients.</p>
     </div>
 
     <div class="service">
-      <h3>Référencement SEO</h3>
+      <h3>SEO</h3>
       <p>Gagnez en visibilité sur Google durablement.</p>
     </div>
 
@@ -278,30 +350,28 @@ section{
 
     <div class="service">
       <h3>Branding</h3>
-      <p>Une image professionnelle qui inspire confiance.</p>
+      <p>Une image forte qui inspire confiance.</p>
     </div>
-
   </div>
 </section>
 
 <!-- ABOUT -->
 <section class="about">
   <div>
-    <h2>Une approche simple et humaine</h2>
+    <h2>Une approche simple, humaine et efficace</h2>
     <p>
-      Je vous accompagne pas à pas pour rendre votre digital clair, efficace et rentable.
-      Pas de jargon, pas de complexité inutile.
+      Je vous accompagne pour rendre votre présence digitale claire, efficace et rentable.
     </p>
   </div>
 </section>
 
-<!-- CTA FINAL -->
+<!-- CTA -->
 <section id="contact" class="cta">
   <h2>Prêt à faire évoluer votre business ?</h2>
-  <p>Réservez un diagnostic gratuit et voyons ensemble votre potentiel.</p>
+  <p>Réservez un diagnostic gratuit et voyons votre potentiel.</p>
 
   <div class="cta-row" style="justify-content:center">
-    <a href="mailto:contact@smartly-digital.fr" class="btn btn-primary">
+    <a class="btn btn-primary" href="mailto:contact@smartly-digital.fr">
       Réserver mon diagnostic
     </a>
   </div>
