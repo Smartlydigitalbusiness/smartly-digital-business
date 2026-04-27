@@ -4,135 +4,308 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smartly Digital Business</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #0A0A0F;
-  color: white;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0A0A0F;
+    --white: #FAFAF8;
+    --accent: #00E5B4;
+    --accent2: #7B5EF8;
+    --gray: #8A8A99;
+    --card-bg: #12121A;
+    --border: rgba(255,255,255,0.08);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
 
-.container {
-  padding: 40px 20px;
-  max-width: 900px;
-  margin: auto;
-}
+  /* NAV */
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 1.2rem 4rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,15,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; }
+  .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav ul li a { text-decoration: none; color: var(--gray); font-size: 0.875rem; font-weight: 400; transition: color 0.2s; }
+  nav ul li a:hover { color: var(--white); }
+  .nav-cta { background: var(--accent); color: var(--black) !important; padding: 0.5rem 1.25rem; border-radius: 100px; font-weight: 500 !important; }
+  .nav-cta:hover { background: #00ccA0; }
 
-h1 {
-  font-size: 2.5rem;
-}
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(123,94,248,0.15) 0%, transparent 70%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,229,180,0.1) 0%, transparent 70%); pointer-events: none; }
+  .hero-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.03em; max-width: 900px; }
+  .hero h1 em { font-style: normal; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.4); }
+  .rotating-word { display: inline-block; color: var(--accent); min-width: 320px; }
+  .hero-sub { font-size: 1.125rem; color: var(--gray); max-width: 500px; margin-top: 1.5rem; line-height: 1.7; font-weight: 300; }
+  .hero-actions { display: flex; gap: 1rem; margin-top: 2.5rem; align-items: center; }
+  .btn-primary { background: var(--accent); color: var(--black); padding: 0.875rem 2rem; border-radius: 100px; font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,229,180,0.3); }
+  .btn-ghost { color: var(--white); padding: 0.875rem 2rem; border-radius: 100px; font-weight: 400; font-size: 0.9rem; text-decoration: none; border: 1px solid var(--border); transition: border-color 0.2s; }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.3); }
+  .scroll-hint { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--gray); font-size: 0.7rem; letter-spacing: 0.1em; }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--gray)); animation: scrollAnim 2s ease-in-out infinite; }
+  @keyframes scrollAnim { 0%,100%{ opacity:0.3; transform:scaleY(1)} 50%{opacity:1; transform:scaleY(1.2)} }
 
-h2 {
-  margin-top: 50px;
-}
+  /* STATS */
+  .stats { padding: 4rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .stat { padding: 2rem; text-align: center; border-right: 1px solid var(--border); }
+  .stat:last-child { border-right: none; }
+  .stat-number { font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 800; color: var(--accent); letter-spacing: -0.04em; }
+  .stat-label { font-size: 0.875rem; color: var(--gray); margin-top: 0.25rem; }
 
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: #00E5B4;
-  color: black;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-}
+  /* SERVICES */
+  section { padding: 6rem 4rem; }
+  .section-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; max-width: 700px; }
+  .section-title em { font-style: normal; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.3); }
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 4rem; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .service-card { background: var(--card-bg); padding: 2.5rem; transition: background 0.3s; cursor: default; }
+  .service-card:hover { background: #1a1a26; }
+  .service-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(0,229,180,0.1); border: 1px solid rgba(0,229,180,0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; font-size: 20px; }
+  .service-card h3 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .service-card p { color: var(--gray); font-size: 0.9rem; line-height: 1.7; font-weight: 300; }
+  .service-tag { display: inline-block; margin-top: 1rem; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
 
-.card {
-  background: #12121A;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
+  /* ABOUT */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .about-visual { position: relative; }
+  .about-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; position: relative; overflow: hidden; }
+  .about-box::before { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 200px; background: radial-gradient(circle, rgba(123,94,248,0.2) 0%, transparent 70%); }
+  .about-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,229,180,0.1); border: 1px solid rgba(0,229,180,0.2); border-radius: 100px; padding: 0.4rem 1rem; font-size: 0.75rem; color: var(--accent); margin-bottom: 1.5rem; }
+  .about-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{ transform:scale(1); opacity:1 } 50%{ transform:scale(1.3); opacity:0.7 } }
+  .about-box-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+  .about-box p { color: var(--gray); line-height: 1.8; font-weight: 300; }
+  .about-features { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .feat { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; }
+  .feat::before { content: ''; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .about-text .section-title { margin-bottom: 1.5rem; }
+  .about-text p { color: var(--gray); line-height: 1.8; font-weight: 300; margin-bottom: 1.5rem; }
+
+  /* TESTIMONIALS */
+  .testimonials-bg { background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .testi-card { background: var(--black); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: border-color 0.3s; }
+  .testi-card:hover { border-color: rgba(0,229,180,0.3); }
+  .testi-stars { color: var(--accent); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1rem; }
+  .testi-text { color: var(--gray); font-size: 0.9rem; line-height: 1.7; font-weight: 300; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.5rem; }
+  .testi-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent2); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.75rem; color: var(--white); }
+  .testi-info strong { display: block; font-size: 0.85rem; font-weight: 500; }
+  .testi-info span { font-size: 0.75rem; color: var(--gray); }
+
+  /* CTA */
+  .cta-section { text-align: center; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(0,229,180,0.1) 0%, transparent 70%); pointer-events: none; }
+  .cta-section .section-title { margin: 0 auto 1.5rem; text-align: center; }
+  .cta-section p { color: var(--gray); max-width: 480px; margin: 0 auto 2.5rem; font-weight: 300; }
+  .cta-section .btn-primary { font-size: 1rem; padding: 1rem 2.5rem; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 3rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 0.8rem; color: var(--gray); }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<nav>
+  <div class="logo">Smartly<span>.</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#temoignages">Témoignages</a></li>
+    <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
+  </ul>
+</nav>
 
-<!-- HERO -->
-<h1>
-Attirez plus de clients<br>
-grâce à un site web<br>
-qui convertit vraiment
-</h1>
+<section class="hero">
+  <p class="hero-label">Agence digitale — Île-de-France</p>
+  <h1>
+    Faites grandir<br>
+    votre business<br>
+    <em>grâce au</em> <span class="rotating-word" id="rotating">digital.</span>
+  </h1>
+  <p class="hero-sub">Smartly Digital Business vous accompagne dans votre transformation digitale avec des stratégies concrètes et des résultats mesurables.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Démarrer un projet</a>
+    <a href="#services" class="btn-ghost">Voir nos services →</a>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
 
-<p>
-J’aide les TPE et PME à obtenir plus de visibilité, plus de prospects et plus de ventes grâce à une stratégie digitale simple et efficace.
-</p>
-
-<a href="#contact" class="btn">Obtenir un devis gratuit</a>
-
-<!-- SERVICES -->
-<h2>Mes services</h2>
-
-<div class="card">
-<h3>Création de site web</h3>
-<p>Un site moderne, rapide et pensé pour convertir vos visiteurs en clients.</p>
+<div class="stats">
+  <div class="stat fade-up">
+    <div class="stat-number" data-count="94">0%</div>
+    <div class="stat-label">Des TPE considèrent leur présence en ligne indispensable</div>
+  </div>
+  <div class="stat fade-up" style="transition-delay:0.1s">
+    <div class="stat-number" data-count="82">0%</div>
+    <div class="stat-label">Des internautes découvrent de nouvelles entreprises en ligne</div>
+  </div>
+  <div class="stat fade-up" style="transition-delay:0.2s">
+    <div class="stat-number" data-count="76">0%</div>
+    <div class="stat-label">Des Français vérifient un site web avant d'acheter</div>
+  </div>
 </div>
 
-<div class="card">
-<h3>Stratégie digitale</h3>
-<p>Un plan clair pour attirer plus de clients et développer votre business.</p>
-</div>
+<section id="services">
+  <p class="section-label fade-up">Ce que nous faisons</p>
+  <h2 class="section-title fade-up">Des services <em>digitaux</em> qui font vraiment la différence</h2>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">🌐</div>
+      <h3>Création de site web</h3>
+      <p>Des sites internet performants, modernes et optimisés pour convertir vos visiteurs en clients. De la vitrine au e-commerce.</p>
+      <span class="service-tag">→ En savoir plus</span>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.1s">
+      <div class="service-icon">📈</div>
+      <h3>Stratégie digitale</h3>
+      <p>Un plan d'action personnalisé pour booster votre visibilité en ligne, attirer les bons clients et développer votre chiffre d'affaires.</p>
+      <span class="service-tag">→ En savoir plus</span>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.15s">
+      <div class="service-icon">🎨</div>
+      <h3>Identité visuelle</h3>
+      <p>Logo, charte graphique, supports de communication : construisons ensemble une image de marque forte et cohérente.</p>
+      <span class="service-tag">→ En savoir plus</span>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.2s">
+      <div class="service-icon">📱</div>
+      <h3>Community management</h3>
+      <p>Animation de vos réseaux sociaux, création de contenu engageant et gestion de votre communauté pour développer votre notoriété.</p>
+      <span class="service-tag">→ En savoir plus</span>
+    </div>
+  </div>
+</section>
 
-<div class="card">
-<h3>Identité visuelle</h3>
-<p>Une image de marque professionnelle et cohérente.</p>
-</div>
+<section id="about" style="background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="about">
+    <div class="about-visual fade-up">
+      <div class="about-box">
+        <div class="about-badge">Disponible maintenant</div>
+        <div class="about-box-title">Une équipe dédiée à votre réussite</div>
+        <p>Nous combinons créativité, expertise technique et connaissance du marché pour vous offrir des solutions digitales sur-mesure.</p>
+        <div class="about-features">
+          <div class="feat">Accompagnement personnalisé de A à Z</div>
+          <div class="feat">Résultats mesurables et transparents</div>
+          <div class="feat">Réactivité et communication fluide</div>
+          <div class="feat">Tarifs adaptés aux TPE & PME</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text fade-up" style="transition-delay:0.2s">
+      <p class="section-label">Notre approche</p>
+      <h2 class="section-title">Le digital, <em>rendu</em> accessible à tous</h2>
+      <p>Chez Smartly Digital Business, nous croyons que chaque entreprise mérite une présence digitale à la hauteur de ses ambitions — quelle que soit sa taille.</p>
+      <p>Notre mission : vous donner les clés pour exister et grandir en ligne, avec des stratégies concrètes et un accompagnement humain.</p>
+      <a href="#contact" class="btn-primary" style="display:inline-block; text-decoration:none;">Parlons de votre projet →</a>
+    </div>
+  </div>
+</section>
 
-<!-- OFFRE -->
-<h2>Offre de démarrage</h2>
+<section id="temoignages" class="testimonials-bg">
+  <p class="section-label fade-up">Ils nous font confiance</p>
+  <h2 class="section-title fade-up">Ce que disent <em>nos clients</em></h2>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">« Smartly a transformé notre présence en ligne. Notre site génère maintenant des leads de qualité chaque semaine. »</p>
+      <div class="testi-author">
+        <div class="testi-avatar">MC</div>
+        <div class="testi-info">
+          <strong>Marie Chartier</strong>
+          <span>Gérante, Artisan Boulanger</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-up" style="transition-delay:0.1s">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">« Une équipe réactive et créative. Notre identité visuelle est enfin à la hauteur de notre savoir-faire. Je recommande vivement. »</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:var(--accent); color:var(--black);">TR</div>
+        <div class="testi-info">
+          <strong>Thomas Renaud</strong>
+          <span>Dirigeant, Cabinet Conseil</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-up" style="transition-delay:0.2s">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">« Investissement vite rentabilisé. L'accompagnement est complet et l'équipe est toujours disponible pour répondre à mes questions. »</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#533AB7;">SL</div>
+        <div class="testi-info">
+          <strong>Sophie Laurent</strong>
+          <span>Auto-entrepreneuse, Coach</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="card">
-<h3>Pack Visibilité</h3>
-<p>
-Un site + une stratégie pour commencer à attirer des clients rapidement.
-</p>
+<section id="contact" class="cta-section">
+  <p class="section-label" style="text-align:center">Prêt à passer à l'action ?</p>
+  <h2 class="section-title fade-up">Faites grandir<br>votre business <em>aujourd'hui</em></h2>
+  <p>Prenez rendez-vous avec notre équipe. Nous vous répondons sous 24h.</p>
+  <a href="mailto:contact@smartly-digital.fr" class="btn-primary">Nous contacter →</a>
+</section>
 
-<ul>
-<li>✔ Site vitrine professionnel</li>
-<li>✔ Structure optimisée</li>
-<li>✔ SEO de base</li>
-</ul>
+<footer>
+  <div class="logo">Smartly<span>.</span> <span style="color:var(--gray); font-family:'DM Sans'; font-weight:300; font-size:0.875rem;">Digital Business</span></div>
+  <p>© 2026 Smartly Digital Business — Île-de-France</p>
+  <div style="display:flex;gap:1.5rem">
+    <a href="#" style="color:var(--gray); text-decoration:none; font-size:0.8rem;">LinkedIn</a>
+    <a href="#" style="color:var(--gray); text-decoration:none; font-size:0.8rem;">Instagram</a>
+    <a href="#" style="color:var(--gray); text-decoration:none; font-size:0.8rem;">Mentions légales</a>
+  </div>
+</footer>
 
-<p><strong>À partir de 990€</strong></p>
+<script>
+  const words = ['digital.', 'stratégie.', 'visibilité.', 'croissance.'];
+  let idx = 0;
+  const el = document.getElementById('rotating');
+  setInterval(() => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(10px)';
+    el.style.transition = 'opacity 0.3s, transform 0.3s';
+    setTimeout(() => {
+      idx = (idx + 1) % words.length;
+      el.textContent = words[idx];
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 320);
+  }, 2500);
 
-<a href="#contact" class="btn">Je lance mon projet</a>
-</div>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-<!-- ABOUT -->
-<h2>Pourquoi moi ?</h2>
-
-<p>
-Pas d’agence impersonnelle : vous travaillez directement avec une experte impliquée dans votre réussite.
-</p>
-
-<p>
-Mon objectif est simple : vous aider à obtenir des résultats concrets, pas juste un “beau site”.
-</p>
-
-<!-- CONTACT -->
-<h2 id="contact">Contact</h2>
-
-<p>Expliquez-moi votre projet :</p>
-
-<form action="https://formspree.io/f/TON_ID" method="POST">
-<input type="text" name="name" placeholder="Votre nom" required style="width:100%;padding:10px;margin-top:10px;"><br>
-
-<input type="email" name="email" placeholder="Votre email" required style="width:100%;padding:10px;margin-top:10px;"><br>
-
-<textarea name="message" placeholder="Votre projet" required style="width:100%;padding:10px;margin-top:10px;"></textarea><br>
-
-<button type="submit" class="btn">Envoyer</button>
-</form>
-
-<p style="margin-top:20px;font-size:0.8rem;">
-Réponse sous 24h
-</p>
-
-</div>
-
+  document.querySelectorAll('.stat-number[data-count]').forEach(el => {
+    const target = +el.dataset.count;
+    const obs = new IntersectionObserver(entries => {
+      if(entries[0].isIntersecting) {
+        let current = 0;
+        const step = target / 60;
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = Math.round(current) + '%';
+          if(current >= target) clearInterval(timer);
+        }, 16);
+        obs.disconnect();
+      }
+    });
+    obs.observe(el);
+  });
+</script>
 </body>
 </html>
