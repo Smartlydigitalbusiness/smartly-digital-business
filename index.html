@@ -4,387 +4,322 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smartly Digital Business</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#07070C;
-  --white:#FAFAF8;
-  --muted:#A0A0AE;
-  --accent:#00E5B4;
-  --accent2:#7C5CFF;
-  --card:rgba(255,255,255,0.04);
-  --border:rgba(255,255,255,0.08);
+  --cream:#FAF8F4;
+  --white:#FFFFFF;
+  --ink:#1A1A2E;
+  --ink-soft:#4A4A6A;
+  --ink-muted:#8A8AA8;
+  --accent:#00C896;
+  --accent-light:#E6FAF5;
+  --accent2:#7B5EF8;
+  --accent2-light:#F0EDFF;
+  --warm:#FF8C42;
+  --warm-light:#FFF3EB;
+  --border:#E8E6F0;
+  --card:#FFFFFF;
 }
-
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-  font-family:'DM Sans',sans-serif;
-  background:radial-gradient(circle at top, rgba(124,92,255,0.12), transparent 40%),
-             radial-gradient(circle at bottom, rgba(0,229,180,0.08), transparent 50%),
-             var(--bg);
-  color:var(--white);
-  overflow-x:hidden;
-}
-
 html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.6}
 
-/* NAV */
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  padding:16px 32px;
-  background:rgba(10,10,15,0.6);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
-  z-index:100;
-}
-
-.logo{
-  font-family:'Syne';
-  font-weight:700;
-}
-
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(250,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;color:var(--ink)}
 .logo span{color:var(--accent)}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav a{text-decoration:none;color:var(--ink-soft);font-size:0.875rem;transition:color 0.2s}
+nav a:hover{color:var(--ink)}
+.nav-cta{background:var(--ink)!important;color:var(--white)!important;padding:0.5rem 1.25rem;border-radius:100px;font-weight:500!important}
+.nav-cta:hover{background:var(--accent2)!important}
 
-nav a{
-  color:var(--muted);
-  text-decoration:none;
-  margin-left:18px;
-  font-size:13px;
-}
+.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 3rem 4rem;gap:4rem}
+.hero-left{flex:1;max-width:620px}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent-light);border:1px solid rgba(0,200,150,0.25);border-radius:100px;padding:0.4rem 1rem;font-size:0.78rem;color:var(--accent);font-weight:500;margin-bottom:1.75rem}
+.hero-badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-0.03em;color:var(--ink)}
+.hero h1 .highlight{color:var(--accent);position:relative;display:inline-block}
+.hero h1 .highlight::after{content:'';position:absolute;bottom:-4px;left:0;width:100%;height:3px;background:var(--accent);border-radius:2px;opacity:0.4}
+.rotating-word{display:inline-block;color:var(--accent2)}
+.hero-sub{font-size:1.1rem;color:var(--ink-soft);margin-top:1.5rem;line-height:1.75;font-weight:300;max-width:480px}
+.hero-actions{display:flex;gap:1rem;margin-top:2.25rem;align-items:center;flex-wrap:wrap}
+.btn-primary{background:var(--ink);color:var(--white);padding:0.875rem 2rem;border-radius:100px;font-weight:500;font-size:0.9rem;text-decoration:none;transition:all 0.25s;display:inline-block}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn-ghost{color:var(--ink);padding:0.875rem 2rem;border-radius:100px;font-weight:400;font-size:0.9rem;text-decoration:none;border:1.5px solid var(--border);transition:border-color 0.2s;display:inline-block}
+.btn-ghost:hover{border-color:var(--ink-soft)}
+.hero-right{flex:1;max-width:440px;display:flex;flex-direction:column;gap:1rem}
+.hero-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;display:flex;align-items:flex-start;gap:1rem;transition:box-shadow 0.3s}
+.hero-card:hover{box-shadow:0 8px 30px rgba(0,0,0,0.08)}
+.hero-card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.ic-green{background:var(--accent-light)}
+.ic-purple{background:var(--accent2-light)}
+.ic-warm{background:var(--warm-light)}
+.hero-card h4{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:var(--ink);margin-bottom:0.25rem}
+.hero-card p{font-size:0.82rem;color:var(--ink-muted);line-height:1.5;font-weight:300}
 
-nav a:hover{color:var(--white)}
+section{padding:5.5rem 3rem}
+.section-tag{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:0.75rem}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;color:var(--ink)}
+.section-sub{color:var(--ink-soft);margin-top:0.75rem;font-weight:300;font-size:1rem;line-height:1.7;max-width:560px}
 
-/* HERO */
-.hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:140px 32px 80px;
-  position:relative;
-}
+.promise{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.promise-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.promise-big-card{background:var(--cream);border:1px solid var(--border);border-radius:24px;padding:2.5rem;text-align:center;position:relative}
+.promise-emoji{font-size:3rem;margin-bottom:1rem}
+.promise-big-card h3{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--ink);margin-bottom:0.75rem}
+.promise-big-card p{color:var(--ink-soft);font-size:0.9rem;font-weight:300;line-height:1.7}
+.promise-float{position:absolute;top:-1rem;right:-1rem;background:var(--accent);color:var(--white);border-radius:12px;padding:0.75rem 1rem;font-size:0.8rem;font-weight:500;font-family:'Syne',sans-serif}
+.steps{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.25rem}
+.step{display:flex;align-items:flex-start;gap:1rem}
+.step-num{width:36px;height:36px;border-radius:50%;background:var(--accent-light);border:1.5px solid rgba(0,200,150,0.3);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.85rem;color:var(--accent);flex-shrink:0;margin-top:2px}
+.step-content h4{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:var(--ink);margin-bottom:0.2rem}
+.step-content p{font-size:0.85rem;color:var(--ink-soft);font-weight:300}
 
-.hero::before{
-  content:"";
-  position:absolute;
-  top:-200px;
-  right:-200px;
-  width:500px;
-  height:500px;
-  background:radial-gradient(circle, rgba(124,92,255,0.25), transparent 60%);
-  filter:blur(40px);
-}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
+.svc{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2rem;transition:all 0.3s;cursor:default}
+.svc:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.08);border-color:transparent}
+.svc-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.25rem}
+.svc h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;color:var(--ink);margin-bottom:0.6rem}
+.svc p{font-size:0.875rem;color:var(--ink-soft);line-height:1.65;font-weight:300}
+.svc-link{display:inline-block;margin-top:1.25rem;font-size:0.8rem;font-weight:500;color:var(--accent);text-decoration:none}
 
-.hero h1{
-  font-family:'Syne';
-  font-size:clamp(3rem,6vw,5.5rem);
-  line-height:1.05;
-  letter-spacing:-1px;
-}
+.forqui{background:linear-gradient(135deg,#F0EDFF 0%,#E6FAF5 100%);border-radius:24px;padding:4rem 3rem;text-align:center}
+.forqui .section-title{margin:0 auto 0.75rem}
+.forqui .section-sub{margin:0 auto 2.5rem}
+.personas{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.persona{background:var(--white);border-radius:16px;padding:1.5rem;text-align:center;border:1px solid rgba(255,255,255,0.8)}
+.persona-emoji{font-size:2rem;margin-bottom:0.75rem}
+.persona h4{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--ink);margin-bottom:0.25rem}
+.persona p{font-size:0.78rem;color:var(--ink-soft);font-weight:300}
 
-.rotating{
-  color:var(--accent);
-}
+.cta-wrap{background:var(--ink);border-radius:28px;padding:4rem;text-align:center;position:relative;overflow:hidden}
+.cta-wrap::before{content:'';position:absolute;top:-100px;right:-100px;width:350px;height:350px;background:radial-gradient(circle,rgba(0,200,150,0.15) 0%,transparent 70%);pointer-events:none}
+.cta-wrap::after{content:'';position:absolute;bottom:-80px;left:-80px;width:280px;height:280px;background:radial-gradient(circle,rgba(123,94,248,0.12) 0%,transparent 70%);pointer-events:none}
+.cta-wrap .section-title{color:var(--white)}
+.btn-white{background:var(--white);color:var(--ink);padding:1rem 2.5rem;border-radius:100px;font-weight:600;font-size:0.95rem;text-decoration:none;display:inline-block;transition:all 0.25s}
+.btn-white:hover{background:var(--accent);color:var(--white);transform:translateY(-2px)}
 
-.hero p{
-  margin-top:18px;
-  color:var(--muted);
-  max-width:650px;
-  line-height:1.7;
-  font-size:1.05rem;
-}
+footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer p{font-size:0.8rem;color:var(--ink-muted)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:0.8rem;color:var(--ink-muted);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--ink)}
 
-/* CTA */
-.cta-row{
-  margin-top:32px;
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  padding:12px 22px;
-  border-radius:999px;
-  font-size:14px;
-  text-decoration:none;
-  transition:.25s;
-}
-
-.btn-primary{
-  background:linear-gradient(135deg,var(--accent),#00bfa6);
-  color:#000;
-  font-weight:600;
-  box-shadow:0 10px 30px rgba(0,229,180,0.15);
-}
-
-.btn-primary:hover{
-  transform:translateY(-2px);
-}
-
-.btn-secondary{
-  border:1px solid var(--border);
-  color:var(--white);
-  background:rgba(255,255,255,0.02);
-}
-
-/* SECTION GLOBAL */
-section{
-  padding:100px 32px;
-}
-
-/* PROBLEM */
-.problem{
-  text-align:center;
-}
-
-.problem h2{
-  font-family:'Syne';
-  font-size:2.4rem;
-}
-
-.problem p{color:var(--muted);margin-top:10px}
-
-.problem-grid{
-  margin-top:50px;
-  display:grid;
-  gap:16px;
-  max-width:900px;
-  margin-inline:auto;
-}
-
-.problem-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:20px;
-  border-radius:16px;
-  backdrop-filter:blur(10px);
-  transition:.2s;
-}
-
-.problem-card:hover{
-  transform:translateY(-3px);
-  border-color:rgba(0,229,180,0.3);
-}
-
-/* TRANSITION */
-.transition{
-  text-align:center;
-  background:radial-gradient(circle at center, rgba(0,229,180,0.08), transparent 60%);
-}
-
-.transition h2{
-  font-family:'Syne';
-  font-size:2.2rem;
-}
-
-.transition p{
-  color:var(--muted);
-  margin-top:10px;
-}
-
-/* SERVICES */
-.services h2{
-  font-family:'Syne';
-  font-size:2.6rem;
-  text-align:center;
-}
-
-.grid{
-  margin-top:50px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:18px;
-}
-
-.service{
-  background:rgba(255,255,255,0.03);
-  border:1px solid var(--border);
-  padding:26px;
-  border-radius:18px;
-  transition:.25s;
-  position:relative;
-  overflow:hidden;
-}
-
-.service::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  background:linear-gradient(135deg,transparent,rgba(0,229,180,0.15),transparent);
-  opacity:0;
-  transition:.3s;
-}
-
-.service:hover::before{opacity:1}
-
-.service:hover{
-  transform:translateY(-5px);
-}
-
-.service h3{
-  font-family:'Syne';
-  margin-bottom:8px;
-}
-
-/* ABOUT */
-.about{
-  display:grid;
-  gap:40px;
-  max-width:900px;
-  margin:auto;
-}
-
-.about p{
-  color:var(--muted);
-  line-height:1.8;
-}
-
-/* CTA FINAL */
-.cta{
-  text-align:center;
-  background:radial-gradient(circle at center, rgba(124,92,255,0.12), transparent 60%);
-}
-
-.cta h2{
-  font-family:'Syne';
-  font-size:2.4rem;
-}
-
-.cta p{
-  color:var(--muted);
-  margin-top:10px;
-}
-
-/* ANIMATION SIMPLE */
-.fade{
-  animation:fade .8s ease forwards;
-}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  section{padding:80px 20px}
-  nav{padding:14px 18px}
-}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:none}
 </style>
 </head>
-
 <body>
 
 <nav>
   <div class="logo">Smartly<span>.</span></div>
-  <div>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pour-qui">Pour qui ?</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Prendre contact</a></li>
+  </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <h1>
-    Faites grandir votre business<br>
-    <span class="rotating" id="word">digital</span>
-  </h1>
-
-  <p>
-    J’aide les TPE et PME à attirer plus de clients et développer leur visibilité grâce à des stratégies digitales simples et efficaces.
-  </p>
-
-  <div class="cta-row">
-    <a href="#contact" class="btn btn-primary">Diagnostic gratuit</a>
-    <a href="#services" class="btn btn-secondary">Voir les solutions</a>
-  </div>
-</section>
-
-<!-- PROBLEM -->
-<section class="problem">
-  <h2>Votre présence en ligne ne suffit plus</h2>
-  <p>Voici ce que vivent beaucoup d’entreprises aujourd’hui :</p>
-
-  <div class="problem-grid">
-    <div class="problem-card">Manque de visibilité sur Google</div>
-    <div class="problem-card">Peu de nouveaux clients réguliers</div>
-    <div class="problem-card">Stratégie digitale inexistante ou floue</div>
-  </div>
-</section>
-
-<!-- TRANSITION -->
-<section class="transition">
-  <h2>Et si votre digital devenait un levier de croissance ?</h2>
-  <p>Une stratégie claire peut transformer votre activité.</p>
-  <div class="cta-row" style="justify-content:center">
-    <a class="btn btn-primary" href="#services">Découvrir comment</a>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="services">
-  <h2>Des solutions qui transforment votre activité</h2>
-
-  <div class="grid">
-    <div class="service">
-      <h3>Site qui convertit</h3>
-      <p>Un site pensé pour transformer vos visiteurs en clients.</p>
+  <div class="hero-left">
+    <div class="hero-badge"><span class="hero-badge-dot"></span> Agence digitale — Île-de-France</div>
+    <h1>
+      Le digital,<br>
+      <span class="highlight">enfin simple</span><br>
+      pour votre<br>
+      <span class="rotating-word" id="rot">commerce.</span>
+    </h1>
+    <p class="hero-sub">Vous connaissez votre métier sur le bout des doigts. Nous, c'est le digital. Ensemble, on fait grandir votre business — sans jargon, sans prise de tête.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Démarrer gratuitement →</a>
+      <a href="#services" class="btn-ghost">Voir nos services</a>
     </div>
-
-    <div class="service">
-      <h3>SEO</h3>
-      <p>Gagnez en visibilité sur Google durablement.</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card fade-up">
+      <div class="hero-card-icon ic-green">🌐</div>
+      <div>
+        <h4>Votre site web en 3 semaines</h4>
+        <p>Professionnel, rapide, optimisé pour être trouvé sur Google.</p>
+      </div>
     </div>
-
-    <div class="service">
-      <h3>Marketing digital</h3>
-      <p>Attirez plus de clients avec une stratégie claire.</p>
+    <div class="hero-card fade-up" style="transition-delay:0.1s">
+      <div class="hero-card-icon ic-purple">📱</div>
+      <div>
+        <h4>Visibilité sur les réseaux sociaux</h4>
+        <p>On s'occupe de tout : contenus, planification, community.</p>
+      </div>
     </div>
-
-    <div class="service">
-      <h3>Branding</h3>
-      <p>Une image forte qui inspire confiance.</p>
+    <div class="hero-card fade-up" style="transition-delay:0.2s">
+      <div class="hero-card-icon ic-warm">🎨</div>
+      <div>
+        <h4>Une image qui vous ressemble</h4>
+        <p>Logo, charte graphique, supports print & digital.</p>
+      </div>
+    </div>
+    <div class="hero-card fade-up" style="transition-delay:0.3s;background:var(--accent-light);border-color:rgba(0,200,150,0.2)">
+      <div style="width:44px;height:44px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">💬</div>
+      <div>
+        <h4 style="color:var(--accent)">Un interlocuteur unique</h4>
+        <p>On vous accompagne de A à Z, en français, sans jargon.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about">
-  <div>
-    <h2>Une approche simple, humaine et efficace</h2>
-    <p>
-      Je vous accompagne pour rendre votre présence digitale claire, efficace et rentable.
-    </p>
+<section class="promise" id="promise">
+  <div class="promise-inner">
+    <div class="promise-visual fade-up">
+      <div class="promise-big-card">
+        <div class="promise-float">100% humain</div>
+        <div class="promise-emoji">🤝</div>
+        <h3>On parle votre langue, pas celle du digital</h3>
+        <p>Pas de termes techniques incompréhensibles. On vous explique tout simplement, on avance ensemble, et on vous forme à votre rythme.</p>
+      </div>
+    </div>
+    <div class="fade-up" style="transition-delay:0.15s">
+      <p class="section-tag">Notre promesse</p>
+      <h2 class="section-title">Le digital,<br>rendu <span style="color:var(--accent)">accessible</span></h2>
+      <p class="section-sub">Nous avons créé Smartly pour les commerçants qui veulent exister en ligne — sans avoir à tout comprendre eux-mêmes.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>On écoute votre histoire</h4>
+            <p>Un rendez-vous gratuit pour comprendre votre activité, vos clients, vos besoins réels.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>On construit votre présence</h4>
+            <p>Site web, réseaux, identité visuelle : on crée tout ce dont vous avez besoin.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>On reste à vos côtés</h4>
+            <p>Un suivi mensuel, des conseils simples, et une équipe disponible pour toutes vos questions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section id="contact" class="cta">
-  <h2>Prêt à faire évoluer votre business ?</h2>
-  <p>Réservez un diagnostic gratuit et voyons votre potentiel.</p>
-
-  <div class="cta-row" style="justify-content:center">
-    <a class="btn btn-primary" href="mailto:contact@smartly-digital.fr">
-      Réserver mon diagnostic
-    </a>
+<section id="services">
+  <div class="fade-up"><p class="section-tag">Ce qu'on fait pour vous</p></div>
+  <h2 class="section-title fade-up">Tout ce qu'il faut,<br>rien de superflu</h2>
+  <p class="section-sub fade-up">Des services pensés pour les commerces de proximité, à des tarifs adaptés aux TPE/PME.</p>
+  <div class="services-grid">
+    <div class="svc fade-up">
+      <div class="svc-icon ic-green">🌐</div>
+      <h3>Création de site web</h3>
+      <p>Un site beau, rapide et visible sur Google. On s'occupe de tout, vous n'avez qu'à valider.</p>
+      <a href="#" class="svc-link">En savoir plus →</a>
+    </div>
+    <div class="svc fade-up" style="transition-delay:0.08s">
+      <div class="svc-icon ic-purple">📈</div>
+      <h3>Référencement local (SEO)</h3>
+      <p>Apparaissez en premier sur Google quand vos clients cherchent ce que vous proposez près de chez eux.</p>
+      <a href="#" class="svc-link">En savoir plus →</a>
+    </div>
+    <div class="svc fade-up" style="transition-delay:0.16s">
+      <div class="svc-icon ic-warm">🎨</div>
+      <h3>Identité visuelle</h3>
+      <p>Logo, couleurs, supports print : une image cohérente et professionnelle qui inspire confiance.</p>
+      <a href="#" class="svc-link">En savoir plus →</a>
+    </div>
+    <div class="svc fade-up" style="transition-delay:0.24s">
+      <div class="svc-icon" style="background:#FFF0F5">📱</div>
+      <h3>Réseaux sociaux</h3>
+      <p>On crée vos contenus, on les publie, on répond à votre communauté. Vous profitez des résultats.</p>
+      <a href="#" class="svc-link">En savoir plus →</a>
+    </div>
+    <div class="svc fade-up" style="transition-delay:0.32s">
+      <div class="svc-icon" style="background:#F0F8FF">📧</div>
+      <h3>E-mailing & newsletters</h3>
+      <p>Restez en contact avec vos clients, fidélisez-les et boostez votre fréquentation avec des campagnes ciblées.</p>
+      <a href="#" class="svc-link">En savoir plus →</a>
+    </div>
+    <div class="svc fade-up" style="transition-delay:0.4s">
+      <div class="svc-icon" style="background:#FFFBF0">🎓</div>
+      <h3>Formation & accompagnement</h3>
+      <p>On vous apprend à devenir autonome sur le digital, à votre rythme, sans prise de tête.</p>
+      <a href="#" class="svc-link">En savoir plus →</a>
+    </div>
   </div>
 </section>
+
+<section id="pour-qui" style="padding-top:0">
+  <div class="forqui fade-up">
+    <p class="section-tag" style="text-align:center">Pour qui ?</p>
+    <h2 class="section-title" style="text-align:center;max-width:600px;margin:0 auto">Fait pour <span style="color:var(--accent2)">vous</span>, quoi que vous fassiez</h2>
+    <p class="section-sub" style="text-align:center;margin:0.75rem auto 2.5rem">Artisan, commerçant, indépendant ou dirigeant de PME — Smartly s'adapte à votre métier.</p>
+    <div class="personas">
+      <div class="persona">
+        <div class="persona-emoji">🛍️</div>
+        <h4>Commerçants</h4>
+        <p>Boutique, épicerie, prêt-à-porter...</p>
+      </div>
+      <div class="persona">
+        <div class="persona-emoji">🍕</div>
+        <h4>Restaurateurs</h4>
+        <p>Restaurant, boulangerie, traiteur...</p>
+      </div>
+      <div class="persona">
+        <div class="persona-emoji">🔧</div>
+        <h4>Artisans</h4>
+        <p>Plombier, électricien, menuisier...</p>
+      </div>
+      <div class="persona">
+        <div class="persona-emoji">💆</div>
+        <h4>Services de proximité</h4>
+        <p>Coiffeur, kiné, coach, consultant...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="cta-wrap fade-up">
+    <p class="section-tag" style="color:var(--accent)">Prêt à démarrer ?</p>
+    <h2 class="section-title" style="max-width:600px;margin:0 auto 1rem">Un premier rendez-vous offert, sans engagement</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.6);margin:0 auto 2.5rem">30 minutes pour parler de votre projet. On vous dit honnêtement ce dont vous avez besoin — et ce dont vous n'avez pas besoin.</p>
+    <a href="mailto:contact@smartly-digital.fr" class="btn-white">Réserver mon rendez-vous gratuit →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Smartly<span>.</span> <span style="color:var(--ink-muted);font-family:'DM Sans';font-weight:300;font-size:0.85rem"> Digital Business</span></div>
+  <p>© 2026 Smartly Digital Business — Île-de-France</p>
+  <div class="footer-links">
+    <a href="#">LinkedIn</a>
+    <a href="#">Instagram</a>
+    <a href="#">Mentions légales</a>
+  </div>
+</footer>
 
 <script>
-const words=["digital","marketing","branding","référencement"];
-let i=0;
+const words=['commerce.','restaurant.','artisan.','boutique.','cabinet.'];
+let idx=0;
+const el=document.getElementById('rot');
 setInterval(()=>{
-  i=(i+1)%words.length;
-  document.getElementById("word").textContent=words[i];
-},2000);
-</script>
+  el.style.opacity='0';el.style.transform='translateY(8px)';el.style.transition='all 0.3s';
+  setTimeout(()=>{
+    idx=(idx+1)%words.length;el.textContent=words[idx];
+    el.style.opacity='1';el.style.transform='translateY(0)';
+  },320);
+},2600);
 
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
